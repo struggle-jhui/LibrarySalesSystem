@@ -1,7 +1,7 @@
 package com.epam.librarysalessystem.task;
 
-import com.epam.librarysalessystem.ScoreHandler.ScoreHandler;
-import com.epam.librarysalessystem.ScoreHandler.ScoreHandlerFactory;
+import com.epam.librarysalessystem.handler.ScoreHandler;
+import com.epam.librarysalessystem.handler.ScoreHandlerFactory;
 import com.epam.librarysalessystem.dao.MemberDao;
 import com.epam.librarysalessystem.dao.OrderDao;
 import com.epam.librarysalessystem.entity.Member;

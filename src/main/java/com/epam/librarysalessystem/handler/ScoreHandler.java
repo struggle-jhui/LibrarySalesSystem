@@ -1,4 +1,4 @@
-package com.epam.librarysalessystem.ScoreHandler;
+package com.epam.librarysalessystem.handler;
 
 import com.epam.librarysalessystem.entity.Member;
 import org.springframework.beans.factory.InitializingBean;

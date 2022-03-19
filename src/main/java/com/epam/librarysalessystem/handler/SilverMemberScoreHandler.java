@@ -1,4 +1,4 @@
-package com.epam.librarysalessystem.ScoreHandler;
+package com.epam.librarysalessystem.handler;
 
 import com.epam.librarysalessystem.dao.MemberDao;
 import com.epam.librarysalessystem.entity.Member;
@@ -14,23 +14,24 @@ import java.math.BigDecimal;
  * @Since 2022/3/18
  */
 @Component
-public class CopperMemberScoreHandler implements ScoreHandler{
-
+public class SilverMemberScoreHandler implements ScoreHandler {
+    private static final BigDecimal TWICE = new BigDecimal(2);
 
     @Autowired
     private MemberDao memberDao;
 
     @Override
     public void updateMemberScore(Member member, BigDecimal memberScore, BigDecimal totalOrderPrice) {
-        if (totalOrderPrice.compareTo(memberScore) == 0) {
+        BigDecimal correctScore = totalOrderPrice.multiply(TWICE);
+        if (memberScore.compareTo(correctScore) == 0) {
             return;
         }
-        member.setScore(totalOrderPrice);
+        member.setScore(correctScore);
         memberDao.save(member);
     }
 
     @Override
     public void afterPropertiesSet() throws Exception {
-        ScoreHandlerFactory.register(MemberType.COPPER, this);
+        ScoreHandlerFactory.register(MemberType.SILVER, this);
     }
 }
